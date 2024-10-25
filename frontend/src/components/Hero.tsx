@@ -6,7 +6,7 @@ const Hero = () => {
 					Find your next stay
 				</h1>
 				<p className="text-2xl text-white">
-					Search for Hotels for your Reserve Duty...
+					Search for Hotels for your Reserve Duty Orders...
 				</p>
 			</div>
 		</div>
