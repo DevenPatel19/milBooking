@@ -1,5 +1,5 @@
-import express from "express";
-import {Request, Response} from 'express';
+import express, {Request, Response} from "express";
+
 import User from '../models/user';
 import jwt from "jsonwebtoken";
 import { check, validationResult } from "express-validator";
@@ -47,6 +47,7 @@ async (req: Request, res: Response) => {
 		lastName: req.body.lastName,
 		base: req.body.base,
 		unit: req.body.unit,
+		role: "airman"
 	  });
 	  
       await user.save();

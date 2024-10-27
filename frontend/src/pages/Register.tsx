@@ -13,6 +13,7 @@ export type RegisterFormData = {
 	confirmpassword: string;
 	base: string;
 	unit: string;
+	role: string
 }
 
 const Register = () => {
@@ -23,7 +24,7 @@ const Register = () => {
 		register,
 		watch,
 		handleSubmit,
-		formState: { errors},
+		formState: { errors },
 	} = useForm<RegisterFormData>();
 
 	const mutation= useMutation(apiClient.register, {
@@ -39,12 +40,17 @@ const Register = () => {
 	// Form data is collected and mutated here then sent to apiClient
 	const onSubmit = handleSubmit((data) => {
 		mutation.mutate(data);
-	})
+	});
+
 	return (
 		<form className="flex flex-col gap-5 px-2" onSubmit={onSubmit}>
-			<h2 className="text-3xl font-bold">Create an Account</h2>
+			<h2 className="text-3xl font-bold">Create an Airman Account!</h2>
+			{/*Hidden input for role */}
+			<input type="hidden" {...register("role")} value="airman" />
 			
+			{/* Name Box*/}
 			<div className="flex flex-col md:flex-row gap-5">
+				
 				<label className="text-gray-700 text-sm font-bold flex-1">
 					First Name
 					<input
@@ -67,6 +73,7 @@ const Register = () => {
 				</label>
 			</div >
 			
+			{/* Email Input Field*/}
 			<label className="text-gray-700 text-sm font-bold flex-1">
 					Email
 					<input
@@ -79,7 +86,9 @@ const Register = () => {
 					)}
 			</label>
 			
+			{/* Base and Unit Input Fields*/}
 			<div className="flex flex-col md:flex-row gap-5">
+				
 				<label className="text-gray-700 text-sm font-bold flex-1">
 						Base
 						<input
@@ -92,7 +101,7 @@ const Register = () => {
 				</label>
 			
 				<label className="text-gray-700 text-sm font-bold flex-1">
-						Unit 
+						Unit
 						<input
 						className="border rounded w-full py-1 px-2 font-normal"
 						{...register
@@ -103,7 +112,7 @@ const Register = () => {
 					)}
 				</label>
 			</div>
-			
+			{/* Password Input Field*/}
 			<label className="text-gray-700 text-sm font-bold flex-1">
 					Password
 					<input
@@ -121,7 +130,7 @@ const Register = () => {
 						<span className="text-red-500"> {errors.password.message} </span>
 					)}
 			</label>
-			
+			{/* Confirm Password Input Field*/}
 			<label className="text-gray-700 text-sm font-bold flex-1">
 					Confirm Password
 					<input

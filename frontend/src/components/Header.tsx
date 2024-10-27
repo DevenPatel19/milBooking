@@ -14,6 +14,9 @@ const Header = () => {
 					<Link to="/Register" className="flex items-center text-amber-500 px-3 font-bold hover:bg-gray-600  hover:text-white">
 						Register
 					</Link>
+					<Link to="/Vendor" className="flex items-center text-amber-500 px-3 font-bold hover:bg-gray-600  hover:text-white">
+						Vendor
+					</Link>
 				</span>
 			</div>
 		</div>

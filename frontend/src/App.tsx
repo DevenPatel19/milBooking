@@ -35,8 +35,8 @@ function App() {
           path="/register"
           element={
             <Layout>
-            <Register/>
-          </Layout>
+              <Register/>
+            </Layout>
           }
       />
         <Route path="*" element={<Navigate to="/" />} />

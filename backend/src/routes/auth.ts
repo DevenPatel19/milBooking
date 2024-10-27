@@ -9,7 +9,7 @@ const router = express.Router();
 router.post("/login",
 	[
 	  check("email", "Email is required").isEmail(),
-	  check("password", "Password is required").isLength({
+	  check("password", "Password with 6 or more characters required").isLength({
 		min: 6,
 		}),
 	], 

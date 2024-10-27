@@ -19,13 +19,13 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  role: { type: String, required: false },    // Include in schema
+  role: { type: String, required: true },    // Include in schema
   noShowCount: { type: String, required: false }, // Include in schema
   base: { type: String, required: true },     // Include in schema
   unit: { type: String, required: true },     // Include in schema
 });
 
-// Middleware for hashing password before saving
+// Middleware for hashing password before saving to MongoDB
 userSchema.pre('save', async function (next) {
 	if (this.isModified('password')) {
 	  this.password = await bcrypt.hash(this.password, 8);
